@@ -1,0 +1,181 @@
+<div class="block-header clearfix" style="padding-top: 0px;">
+    <div class="row ">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            
+            <ul class="breadcrumb p-l-0 p-b-0 ">
+                
+                <li class=" breadcrumb-item active">Alarm Tanımlama</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+  
+<div class="jumbotron jumbtron-fluid">
+
+<div class="container-fluid">
+
+
+
+    
+        
+            
+                 <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Notification Name:</label>
+                                <input  name="notName" #notName="ngModel" [(ngModel)]="service.formData.notName"    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Notification Description:</label>
+                                <input name="notDesc" #notDesc="ngModel"  [(ngModel)]="service.formData.notDesc"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Customer Id:</label> 
+                                <input name="customerId" #customerId="ngModel" [(ngModel)]="service.formData.customerId"   class="form-control" style="background-color: #30373F;" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Tag Id:</label>
+                                <!-- <input name="tagId" #tagId="ngModel" [(ngModel)]="service.formData.tagId"   class="form-control"> -->
+                                <select name="tagId" #tagId="ngModel" [(ngModel)]="service.formData.tagId" class="form-control">
+                                    <option value="">-Select-</option> 
+                                    <option value="">1</option> 
+                                    <option value="">2</option> 
+                                    <option value="">3</option> 
+                                </select>
+                            </div>
+
+                            
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Notification Check:</label> 
+                                <select name="notCheck" #notCheck="ngModel" [(ngModel)]="service.formData.notCheck" class="form-control">
+                                    <option value="">-Select-</option> 
+                                    <option value=""><</option> 
+                                    <option value="">></option> 
+                                    <option value=""><=</option> 
+                                </select>
+                                       
+                                    
+                            </div>
+
+                            <div class="form-group item">
+                
+                
+                                <label>Active:<input type="checkbox"  name="isActive" #isActive="ngModel" [(ngModel)]="service.formData.isActive"   class="form-control item"></label>
+                            
+                            </div>
+                            <br>
+            <div class="form-group item">
+                
+                <label>Deleted:<input type="checkbox" name="isDeleted" #isDeleted="ngModel" [(ngModel)]="service.formData.isDeleted"   class="form-control item"></label>
+                
+            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Threshold Value:</label> <!--i need to cme back later-->
+                                <input name="thresholdValue" #thresholdValue="ngModel" [(ngModel)]="service.formData.thresholdValue"   class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Period:</label> <!--i need to cme back later-->
+                                <select name="period" #period="ngModel" [(ngModel)]="service.formData.period"   class="form-control">
+                                    <option value="">-Select-</option> 
+                                    <option value="">1 Dakika</option> 
+                                    <option value="">5 Dakika</option> 
+                                    <option value="">15 Dakika</option> 
+                                </select>
+                            </div>
+
+                            
+
+                            <div class="form-group">
+                                <label>Notification Level:</label> <!--i need to cme back later-->
+                                <select name="notLevel" #notLevel="ngModel" [(ngModel)]="service.formData.notLevel"   class="form-control">
+                                    <option value="">-Select-</option> 
+                                    <option value="">abc</option> 
+                                    <option value="">dce</option> 
+                                    <option value="">efg</option> 
+                                </select>
+                            </div>
+                                    
+
+                            
+
+                        </div>
+                        
+                        <!-- <div class="col-md-6 col-sm-6 col-sm-12">
+                           
+                           
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <button (click)="onClick()" id="button1" type="submit" class="btn btn-dark"><i class="fa fa-database"></i>Save</button>
+                    </div>
+
+                    
+
+                     <!--notification message table-->
+     <table class="table table-borderless">
+        <thead class="thead-light">
+          <th>Id</th>
+          <th>Alarm Id</th> 
+          <th>Title</th>
+          <th>Name</th>
+          <th>WhatsApp Phone</th>
+          <th>E-Mail</th>
+          <th>WhatsApp Active</th>
+          <th>E-Mail Active</th>
+          <th>User Id</th>  
+          <th>
+           <a   class="btn btn-sm btn-success text-white isDisabled"   id="button2"  (click)="AddOrEditNotification(null,service.formData.alarmId) "><i class="fa fa-plus">Add  Alarm Notification</i></a>
+
+           
+            
+
+          </th>
+        </thead>
+        <tbody>
+           <tr *ngIf="service.alarmNotificationMessage.length==0">
+               <td class="font-italic text-center" colspan="9">
+                   Nothing added.
+               </td>
+
+            </tr>
+            <tr *ngFor="let notif of service.alarmNotificationMessage;let i=index" >
+              
+              
+              <td>{{notif.notificationId}}</td>
+              <td>{{notif.alarmId}}</td>
+              <td>{{notif.title}}</td>
+              <td>{{notif.name}}</td>
+              <td>{{notif.wpPhone}}</td>
+              <td>{{notif.email}}</td>
+              <td>{{notif.isWpActive}}</td>
+              <td>{{notif.isMailActive}}</td>
+              <td>{{notif.userId}}</td>
+              
+              
+              
+               
+               
+               <td>
+                   <a  class="btn btn-sm btn-info text-white" (click)="AddOrEditNotification(i,service.formData.alarmId)"><i class="fa fa-pencil"></i></a>
+                   <a  class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteNotificationMessage(notif.notificationId,i)"><i class="fa fa-trash"></i></a>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+                </form>
+            
+        
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<h6 >Alarm Notification Message</h6>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+
+    
+    <!-- <input type="hidden" name=" userId" #userId="ngModel" [(ngModel)]="formData.userId">
+    <input type="hidden" name=" alarmId" #alarmId="ngModel" [(ngModel)]="formData.alarmId"> 
+    <input type="hidden" name=" alarmId" #alarmId="ngModel" [(ngModel)]="formData.alarmId">-->
+    <input type="hidden" name=" notificationId" #notificationId="ngModel" [(ngModel)]="formData.notificationId" class="form-control" >
+   
+   
+    
+       
+         
+    
+
+
+   <div class="form-group">
+    <label >Title:</label>
+    <input name="title" #title="ngModel" [(ngModel)]="formData.title" class="form-control" >
+     
+</div>
+
+
+<div class="form-group">
+    <label>Name:</label>
+
+    <input name="name" #name="ngModel" [(ngModel)]="formData.name" class="form-control">
+    </div>
+    
+       
+
+<div class="form-group">
+    <label>WhatsApp Phone:</label>
+
+    
+        
+        <input name="wpPhone" #wpPhone="ngModel" [(ngModel)]="formData.wpPhone" class="form-control"> 
+        
+    
+</div>
+
+
+
+
+<div class="form-group ">
+<label>E-Mail:</label>
+
+
+    <input name="email" #email="ngModel" [(ngModel)]="formData.email" class="form-control" >
+</div>
+
+   
+
+
+<div class="form-group item">
+    <label>WhatsApp Active: <input type="checkbox" name="isWpActive" #isWpActive="ngModel" [(ngModel)]="formData.isWpActive" class="form-control item" ></label>
+    
+    
+        
+    </div>
+    <br>
+    
+    <div class="form-group item">
+        <label>Email Active:  <input type="checkbox" name="isMailActive" #isMailActive="ngModel" [(ngModel)]="formData.isMailActive" class="form-control item" ></label>
+        
+        
+           
+        </div>
+
+
+       
+    
+
+<div class="form-group">
+<button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+<button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+</div>
+
+
+   
+
+
+
+</form>
